@@ -28,5 +28,9 @@ public interface DataAccessConstants {
     /**
      * Password to access the database.
      */
+<<<<<<< HEAD
     String PASSWD_DB = "root";
+=======
+    String PASSWD_DB = "";
+>>>>>>> origin/master
 }
