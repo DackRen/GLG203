@@ -1,4 +1,11 @@
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;  
+import java.util.regex.Pattern;
+
+import com.yaps.petstore.CustomerCheckException; 
+
 public class Customer {
 	
 	public Customer(String id, String firstname, String lastname) {
@@ -7,13 +14,77 @@ public class Customer {
 		this._lastname= lastname;
 	}
 	
-	
-	
 	public Customer(String id, String firstname, String lastname, String telephone, String street1, String street2,
 			String city, String state, String zipcode, String country, String mail) {
-		// TODO Auto-generated constructor stub
+		this._id = id;
+		this._firstname = firstname;
+		this._lastname = lastname;
+		this._telephone = telephone;
+		this._street1 = street1;
+		this._street2 = street2;
+		this._city = city;
+		this._state = state;
+		this._zipcode = zipcode;
+		this._country = country;
+		this._mail = mail;
+	}
+	
+	
+	public boolean checkData() {
+		if (_firstname == null || "".equals(_firstname))
+			return false;
+		if (_lastname == null || "".equals(_lastname))
+			return false;
+		return true;
 	}
 
+	public boolean checkId(String id) {
+		if (_id == null || "".equals(_id)){
+			return false;
+		}
+		return true;
+	}
+
+	public String getCheckDataError() {
+		if (!checkData())
+			return "Invalid Data";
+		if (!checkId(this._id))
+			return "Invalid id";
+		
+		return null;
+	}
+
+//	1. 必须包含一个并且只有一个符号“@”   
+//	2. 第一个字符不得是“@”或者“.”   
+//	3. 不允许出现“@.”或者.@   
+//	4. 结尾不得是字符“@”或者“.”   
+//	5. 允许“@”前的字符中出现“＋”   
+//	6. 不允许“＋”在最前面，或者“＋@” 
+
+	public boolean checkMail() {
+		String check = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";  
+		Pattern regex = Pattern.compile(check);  
+		Matcher matcher = regex.matcher(this._mail);  
+		if(matcher.matches())
+			return true;
+		return false;
+	}
+
+	public static Customer find(String id) {
+		return _hashmap.get(id);
+	}
+
+	public static boolean remove(String id) {
+		if(find(id)==null)
+			return false;
+		_hashmap.remove(id);
+		return true;
+	}
+
+	public static boolean insert(Customer customer) {
+		_hashmap.put(customer.getId(), customer);
+		return true;
+	}
 
 
 	public String getId() {
@@ -83,8 +154,6 @@ public class Customer {
 		_mail = mail;
 	}
 
-
-
 	private String _id;
     private String _firstname;
     private String _lastname;
@@ -96,51 +165,7 @@ public class Customer {
     private String _zipcode;
     private String _country;
     private String _mail;
-	public boolean checkData() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-
-	public boolean checkId(String id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-
-	public String getCheckDataError() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-	public boolean checkMail() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-
-	public static Customer find(String string) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-	public static boolean remove(String sid) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-
-	public static boolean insert(Customer customer) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    
+    private static Map<String, Customer> _hashmap = new HashMap<String, Customer>();
 
 }
