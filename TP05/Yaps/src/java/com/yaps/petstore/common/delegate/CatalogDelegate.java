@@ -9,13 +9,10 @@ import com.yaps.petstore.common.dto.ItemDTO;
 import com.yaps.petstore.common.dto.ProductDTO;
 import com.yaps.petstore.common.exception.CheckException;
 import com.yaps.petstore.common.exception.CreateException;
-import com.yaps.petstore.common.exception.DuplicateKeyException;
 import com.yaps.petstore.common.exception.FinderException;
-import com.yaps.petstore.common.exception.ObjectNotFoundException;
 import com.yaps.petstore.common.exception.RemoveException;
 import com.yaps.petstore.common.exception.UpdateException;
 import com.yaps.petstore.common.rmi.RMIConstant;
-import com.yaps.petstore.server.domain.category.Category;
 import com.yaps.petstore.server.service.catalog.CatalogServiceRemote;
 
 public class CatalogDelegate implements RMIConstant{

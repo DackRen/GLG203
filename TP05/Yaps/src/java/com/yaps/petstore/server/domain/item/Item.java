@@ -43,11 +43,7 @@ public final class Item extends DomainObject implements Serializable {
     public void checkData() throws CheckException {
         if (_name == null || "".equals(_name))
             throw new CheckException("Invalid name");
-<<<<<<< HEAD
         if (_unitCost < 0)
-=======
-        if (_unitCost <= 0)
->>>>>>> origin/master
             throw new CheckException("Invalid unit cost");
         if (_product == null || _product.getId() == null || "".equals(_product.getId()))
             throw new CheckException("Invalid product");
