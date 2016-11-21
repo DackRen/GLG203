@@ -3,6 +3,7 @@ package com.yaps.petstore.web.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,28 +13,21 @@ import com.yaps.petstore.common.delegate.CustomerDelegate;
 import com.yaps.petstore.common.dto.CustomerDTO;
 import com.yaps.petstore.common.exception.CheckException;
 import com.yaps.petstore.common.exception.CreateException;
+import com.yaps.petstore.common.logging.Trace;
 
 public class CreateCustomerServlet extends HttpServlet {
-//	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException {
-//		try {
-//			doPost(req, res);
-//		} catch (ServletException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	    res.setContentType("text/html");
-//	    PrintWriter out = res.getWriter();
-//	    out.print("<HEAD><TITLE>");
-//	    out.print("A server-side strategy");
-//	    out.print("</TITLE></HEAD><BODY>");
-//	    out.print("<h1>Servlets Rule! ");
-//	    out.print("</h1></BODY>");
-//	    out.close();
-//	  }
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	 private final transient String _cname = this.getClass().getName();
+
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
+		final String mname = "CreateCustomerServlet";
+        Trace.entering(_cname, mname);
+		
+        CustomerDTO customerDTO = new CustomerDTO();
+        
 		String id = request.getParameter("id");
-		String firstname = request.getParameter("lastname");
+		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String email = request.getParameter("email");
 		String telephone = request.getParameter("telephone");
@@ -47,7 +41,7 @@ public class CreateCustomerServlet extends HttpServlet {
 		String creditCardNumber = request.getParameter("creditCardNumber");
 		String creditCardExpiryDate = request.getParameter("creditCardExpiryDate");
 		
-		CustomerDTO customerDTO = new CustomerDTO();
+		
 		customerDTO.setId(id);
 		customerDTO.setFirstname(firstname);
 		customerDTO.setLastname(lastname);
@@ -65,28 +59,22 @@ public class CreateCustomerServlet extends HttpServlet {
 		
 		try {
 			CustomerDelegate.createCustomer(customerDTO);
-			show(request, response);
+			
+	        response.setContentType("text/html");
+	        final PrintWriter out = response.getWriter();
+	        out.println("<html>");
+	        out.println("<head>");
+	        out.println("<title>Customer Created!!</title>");
+	        out.println("</head>");
+	        out.println("<body>");
+	        out.println("<h1><center>Customer Created!!</center></h1>");
+	        out.println("</body>");
+	        out.println("</html>");
+	        out.close();
 		} catch (CreateException | CheckException e) {
-			ErrorServlet es = new ErrorServlet();
-			es.service(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/error".toString());
+		    dispatcher.forward(request, response);
 			e.printStackTrace();
-		}
-		
+		}	
     }
-	private void show(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        response.setContentType("text/html");
-        final PrintWriter out = response.getWriter();
-
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Customer Created!!</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1><center>Customer Created!!</center></h1>");
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
-	}
-	
-
 }

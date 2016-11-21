@@ -10,6 +10,7 @@ import com.yaps.petstore.server.domain.CreditCard;
 import com.yaps.petstore.server.domain.DomainObject;
 
 public class Customer extends DomainObject implements Serializable{
+	
 	private String _firstname;
 	private String _lastname;
 	private String _telephone;
@@ -18,16 +19,18 @@ public class Customer extends DomainObject implements Serializable{
 	private final Address _address  = new Address();
     private final CreditCard _creditCard = new CreditCard();
 	
-	public Customer(String id, String firstName, String lastName) {
-		this.setId(id);
-		this._firstname=firstName;
-		this._lastname=lastName;
-		
-	}
+    
 	public Customer(String id) {
-		this.setId(id);
+		setId(id);
+	}
+	
+	public Customer(String id, String firstName, String lastName) {
+		setId(id);
+		this._firstname=firstName;
+		this._lastname=lastName;	
 	}
 
+	
 	public String getFirstname() {
 		return _firstname;
 	}
@@ -124,13 +127,15 @@ public class Customer extends DomainObject implements Serializable{
     public void setCreditCardExpiryDate(final String creditCardExpiryDate) {
         _creditCard.setCreditCardExpiryDate(creditCardExpiryDate);
     }
+    
+    
 	public void checkData() throws CheckException {
 		if (_firstname == null || "".equals(_firstname))
 			throw new CheckException("Invalid customer first name");
 		if (_lastname == null || "".equals(_lastname))
 			throw new CheckException("Invalid customer last name");
-		
 	}
+	
 	public String toString () {
         final StringBuffer buf = new StringBuffer (); 
        buf.append ( "Customer {" ); 

@@ -1,6 +1,7 @@
 package com.yaps.petstore.common.dto;
 
 public class AddressDTO implements DataTransfertObject {
+	
 	private String _street1;
     private String _street2;
     private String _city;

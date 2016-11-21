@@ -2,7 +2,7 @@ package com.yaps.petstore.server.domain;
 
 import com.yaps.petstore.common.exception.CheckException;
 
-public class Address extends DomainObject{
+public class Address extends DomainObject {
 	
 	
 	private String _street1;
@@ -50,7 +50,10 @@ public class Address extends DomainObject{
 	public void setCountry(String country) {
 		_country = country;
 	}
+	
 	public void checkData() throws CheckException {
+		if(_street1==null||_city==null||_state==null||_zipcode==null||_country==null)
+			throw new CheckException("invalued ");
 		if(_street1.equals("")||_city.equals("")||_state.equals("")||_zipcode.equals("")||_country.equals(""))
 			throw new CheckException("invalued ");
 		

@@ -17,15 +17,11 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="lib" path="/Applications/MAMP/Library/lib/mysql-connector-java-5.1.37-bin.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.7/lib/httpunit.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.7/jars/js-1.6R5.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.7/jars/activation-1.1.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.7/jars/jtidy-4aug2000r7-dev.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.7/jars/junit-3.8.1.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.7/jars/mail-1.4.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.7/jars/nekohtml-0.9.5.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.7/jars/servlet-api-2.4.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.7/jars/xercesImpl-2.6.1.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.7/jars/xmlParserAPIs-2.6.1.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/lib/httpunit.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/js.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/nekohtml.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/xmlParserAPIs.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/development/apache-tomcat-9.0.0.M13/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
