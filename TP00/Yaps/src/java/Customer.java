@@ -4,8 +4,6 @@ import java.util.Map;
 import java.util.regex.Matcher;  
 import java.util.regex.Pattern;
 
-import com.yaps.petstore.CustomerCheckException; 
-
 public class Customer {
 	
 	public Customer(String id, String firstname, String lastname) {
@@ -31,6 +29,8 @@ public class Customer {
 	
 	
 	public boolean checkData() {
+		if(_id == null || "".equals(_id))
+			return false;
 		if (_firstname == null || "".equals(_firstname))
 			return false;
 		if (_lastname == null || "".equals(_lastname))
@@ -46,12 +46,13 @@ public class Customer {
 	}
 
 	public String getCheckDataError() {
-		if (!checkData())
-			return "Invalid Data";
 		if (!checkId(this._id))
 			return "Invalid id";
-		
-		return null;
+		if (_firstname == null || "".equals(_firstname))
+			return "Invalid first name";
+		if (_lastname == null || "".equals(_lastname))
+			return "Invalid last name";
+		return "right";
 	}
 
 //	1. 必须包含一个并且只有一个符号“@”   
