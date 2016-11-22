@@ -21,8 +21,16 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/lib/httpunit.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/js.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/lib/httpunit.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/js.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/nekohtml.jar"/>
 	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/xmlParserAPIs.jar"/>
