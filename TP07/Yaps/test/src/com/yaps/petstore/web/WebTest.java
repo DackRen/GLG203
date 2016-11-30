@@ -1,5 +1,7 @@
 package com.yaps.petstore.web;
 
+import java.net.URLEncoder;
+
 import com.meterware.httpunit.WebConversation;
 import com.yaps.petstore.AbstractTestCase;
 import junit.framework.TestSuite;
@@ -88,7 +90,7 @@ public class WebTest extends AbstractTestCase {
         }
 
         try {
-            webConversation.getResponse(URL_BARKBANK + "/creditcard");
+        	webConversation.getResponse(URL_BARKBANK + "/creditcard");
         } catch (Exception e) {
             fail("The CreditCardServlet hasn't been found");
         }

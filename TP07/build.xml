@@ -41,7 +41,7 @@
     <property name="db.host" value="localhost"/>
     <property name="db.sid" value="${application.name}DB"/>
     <property name="db.user" value="root"/>
-    <property name="db.password" value=""/>
+    <property name="db.password" value="root"/>
     <property name="db.port" value="3306"/>
     <property name="db.driver" value="com.mysql.jdbc.Driver"/>
     <property name="db.url" value="jdbc:mysql://${db.host}:${db.port}/${db.sid}"/>
@@ -65,7 +65,7 @@
     <property name="junit.home" value="${env.JUNIT_HOME}"/>
     <property name="junit.jar" value="${junit.home}/junit-4.4.jar"/>
     <property name="mysql.home" value="${env.MYSQL_HOME}"/>
-    <property name="mysql.jar" value="${mysql.home}/lib/mysql-connector-java-5.1.21-bin.jar"/>
+    <property name="mysql.jar" value="${mysql.home}/lib/mysql-connector-java-5.1.37-bin.jar"/>
     <property name="tomcat.home" value="${env.TOMCAT_HOME}"/>
     <property name="servlet-api.jar" value="${tomcat.home}/lib/servlet-api.jar"/>
     <property name="tomcat.deploy.dir" value="${tomcat.home}/webapps"/>

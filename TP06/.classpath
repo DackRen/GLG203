@@ -15,7 +15,11 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="/Applications/MAMP/Library/lib/mysql-connector-java-5.1.37-bin.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
@@ -31,9 +35,25 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/nekohtml.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/xercesImpl.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/xmlParserAPIs.jar"/>
-	<classpathentry kind="lib" path="/Users/renjunzhou/development/apache-tomcat-9.0.0.M13/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/nekohtml.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/xercesImpl.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/renjunzhou/development/httpunit-1.6.2/jars/xmlParserAPIs.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/renjunzhou/development/apache-tomcat-9.0.0.M13/lib/servlet-api.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
