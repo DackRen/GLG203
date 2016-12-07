@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring accessors="true" comment="Delete element from project &apos;Yaps&apos;&#x0A;- Original project: &apos;Yaps&apos;&#x0A;- Original element: &apos;WEB-INF&apos;" description="Delete element" element1="resources/WEB-INF" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="1" stamp="1480859957983" subPackages="false" version="1.0"/>&#x0A;<refactoring comment="Move &apos;META-INF&apos; to &apos;Yaps&apos;" description="Move &apos;META-INF&apos; to &apos;Yaps&apos;" destination="/Yaps" element1="resources/META-INF" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1480859969011" updateReferences="true"/>
+</session>
