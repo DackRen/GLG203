@@ -8,5 +8,9 @@ TP03 Database<br>
 TP04 Swing (GUI)<br>
 TP05 RMI<br>
 TP06 Servlet<br>
-TP07 ...
+TP07 XML<br>
+TP08 JSP<br>
+TP09 JSTL<br>
+TP10 ...<br>
+TP11 ...
 
