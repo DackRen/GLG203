@@ -112,7 +112,7 @@ public final class ItemDAO extends AbstractDataAccessObject {
             statement = connection.createStatement();
 
             // Select a Row
-            final String sql = "SELECT " + COLUMNS + " FROM " + TABLE + " WHERE ID LIKE '" + keyword + "'";
+            final String sql = "SELECT " + COLUMNS + " FROM " + TABLE + " WHERE ID LIKE '%" + keyword + "%'";
             resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {

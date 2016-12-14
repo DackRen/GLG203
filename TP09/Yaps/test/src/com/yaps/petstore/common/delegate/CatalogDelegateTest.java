@@ -1179,7 +1179,8 @@ public final class CatalogDelegateTest extends AbstractTestCase {
         try {
             return new CatalogDelegateFactory().createCatalogDelegate().searchItems(keyword).size();
         } catch (ObjectNotFoundException e) {
-            return 0;
+        	//throw new FinderException();
+        	return 0;   
         }
     }
     

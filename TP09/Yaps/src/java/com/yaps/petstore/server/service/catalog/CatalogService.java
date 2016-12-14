@@ -513,7 +513,6 @@ public final class CatalogService extends AbstractRemoteService implements Catal
         itemDTO.setName(item.getName());
         itemDTO.setUnitCost(item.getUnitCost());
         itemDTO.setImagePath(item.getImagePath());
-        
 
       
         // Retreives the data for the linked object
