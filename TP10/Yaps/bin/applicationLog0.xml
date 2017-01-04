@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-11-23T17:23:35</date>
+  <millis>1479918215415</millis>
+  <sequence>0</sequence>
+  <logger>sun.rmi.server.call</logger>
+  <level>FINER</level>
+  <class>sun.rmi.server.UnicastServerRef</class>
+  <method>logCall</method>
+  <thread>10</thread>
+  <message>RMI TCP Connection(1)-192.168.56.1: [192.168.56.1: sun.rmi.transport.DGCImpl[0:0:0, 2]: java.rmi.dgc.Lease dirty(java.rmi.server.ObjID[], long, java.rmi.dgc.Lease)]</message>
+</record>
+<record>
+  <date>2016-11-23T17:23:35</date>
+  <millis>1479918215441</millis>
+  <sequence>1</sequence>
+  <logger>sun.rmi.server.call</logger>
+  <level>FINER</level>
+  <class>sun.rmi.server.UnicastServerRef</class>
+  <method>logCall</method>
+  <thread>10</thread>
+  <message>RMI TCP Connection(1)-192.168.56.1: [192.168.56.1: sun.rmi.transport.DGCImpl[0:0:0, 2]: java.rmi.dgc.Lease dirty(java.rmi.server.ObjID[], long, java.rmi.dgc.Lease)]</message>
+</record>
+<record>
+  <date>2016-11-23T17:23:35</date>
+  <millis>1479918215454</millis>
+  <sequence>2</sequence>
+  <logger>sun.rmi.server.call</logger>
+  <level>FINER</level>
+  <class>sun.rmi.server.UnicastServerRef</class>
+  <method>logCall</method>
+  <thread>10</thread>
+  <message>RMI TCP Connection(1)-192.168.56.1: [192.168.56.1: sun.rmi.transport.DGCImpl[0:0:0, 2]: java.rmi.dgc.Lease dirty(java.rmi.server.ObjID[], long, java.rmi.dgc.Lease)]</message>
+</record>
+<record>
+  <date>2016-11-23T17:28:35</date>
+  <millis>1479918515458</millis>
+  <sequence>3</sequence>
+  <logger>sun.rmi.server.call</logger>
+  <level>FINER</level>
+  <class>sun.rmi.server.UnicastServerRef</class>
+  <method>logCall</method>
+  <thread>11</thread>
+  <message>RMI TCP Connection(2)-192.168.56.1: [192.168.56.1: sun.rmi.transport.DGCImpl[0:0:0, 2]: java.rmi.dgc.Lease dirty(java.rmi.server.ObjID[], long, java.rmi.dgc.Lease)]</message>
+</record>
+<record>
+  <date>2016-11-23T17:33:35</date>
+  <millis>1479918815458</millis>
+  <sequence>4</sequence>
+  <logger>sun.rmi.server.call</logger>
+  <level>FINER</level>
+  <class>sun.rmi.server.UnicastServerRef</class>
+  <method>logCall</method>
+  <thread>12</thread>
+  <message>RMI TCP Connection(3)-192.168.56.1: [192.168.56.1: sun.rmi.transport.DGCImpl[0:0:0, 2]: java.rmi.dgc.Lease dirty(java.rmi.server.ObjID[], long, java.rmi.dgc.Lease)]</message>
+</record>
+<record>
+  <date>2016-11-23T17:38:35</date>
+  <millis>1479919115459</millis>
+  <sequence>5</sequence>
+  <logger>sun.rmi.server.call</logger>
+  <level>FINER</level>
+  <class>sun.rmi.server.UnicastServerRef</class>
+  <method>logCall</method>
+  <thread>13</thread>
+  <message>RMI TCP Connection(4)-192.168.56.1: [192.168.56.1: sun.rmi.transport.DGCImpl[0:0:0, 2]: java.rmi.dgc.Lease dirty(java.rmi.server.ObjID[], long, java.rmi.dgc.Lease)]</message>
+</record>
+</log>
