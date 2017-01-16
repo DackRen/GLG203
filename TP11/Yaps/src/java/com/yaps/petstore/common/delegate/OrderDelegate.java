@@ -29,7 +29,7 @@ public final class OrderDelegate {
     /**
      * Delegates the call to the {@link OrderService#createOrder(String, Map) OrderService().createOrder} method.
      */
-    public static String createOrder(final String customerId, final Map shoppingCart) throws CreateException, CheckException, RemoteException {
+    public static String createOrder(final String customerId, final Map<String, Integer> shoppingCart) throws CreateException, CheckException, RemoteException {
         return getOrderService().createOrder(customerId, shoppingCart);
     }
 

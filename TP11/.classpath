@@ -4,20 +4,6 @@
 	<classpathentry kind="src" path="Hello"/>
 	<classpathentry kind="src" path="Yaps/src/java"/>
 	<classpathentry kind="src" path="Yaps/test/src"/>
-	<classpathentry kind="lib" path="jars/dom4j.jar"/>
-	<classpathentry kind="lib" path="jars/eclipselink-2.0.0.jar"/>
-	<classpathentry kind="lib" path="jars/eclipselink-2.2.1.jar"/>
-	<classpathentry kind="lib" path="jars/javax.persistence-2.0.0.jar"/>
-	<classpathentry kind="lib" path="jars/javax.persistence-2.0.3.jar"/>
-	<classpathentry kind="lib" path="jars/jaxen.jar"/>
-	<classpathentry kind="lib" path="jars/junit-4.4.jar"/>
-	<classpathentry kind="lib" path="jars/mysql-connector-java-5.1.21-bin.jar"/>
-	<classpathentry kind="lib" path="jars/xunit/httpunit.jar"/>
-	<classpathentry kind="lib" path="jars/xunit/js.jar"/>
-	<classpathentry kind="lib" path="jars/xunit/nekohtml.jar"/>
-	<classpathentry kind="lib" path="jars/xunit/xercesImpl.jar"/>
-	<classpathentry kind="lib" path="jars/xunit/xmlParserAPIs.jar"/>
-	<classpathentry kind="lib" path="Yaps/test11.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/Users/renjunzhou/development/glassfish4/glassfish/modules/javax.servlet-api.jar"/>
 	<classpathentry kind="lib" path="/Users/renjunzhou/development/glassfish4/glassfish/modules/javax.servlet.jsp-api.jar"/>
@@ -26,5 +12,18 @@
 	<classpathentry kind="lib" path="/Users/renjunzhou/development/glassfish4/glassfish/modules/javax.transaction-api.jar"/>
 	<classpathentry kind="lib" path="/Users/renjunzhou/development/glassfish4/glassfish/modules/glassfish-naming.jar"/>
 	<classpathentry kind="lib" path="/Users/renjunzhou/development/glassfish4/glassfish/lib/gf-client.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/dom4j.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/eclipselink-2.0.0.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/eclipselink-2.2.1.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/javax.persistence-2.0.0.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/javax.persistence-2.0.3.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/jaxen.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/junit-4.4.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/mysql-connector-java-5.1.21-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/xunit/httpunit.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/xunit/js.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/xunit/nekohtml.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/xunit/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="/Users/renjunzhou/code/eclipse/GLG203/jars/xunit/xmlParserAPIs.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

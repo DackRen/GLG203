@@ -1,6 +1,5 @@
 package com.yaps.petstore.server.service.catalog;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -43,7 +42,7 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
     // ======================================
     // =            Constructors            =
     // ======================================
-    public CatalogServiceBean() throws RemoteException {
+    public CatalogServiceBean(){
     }
 
     // ======================================
@@ -54,12 +53,16 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         Trace.entering(getCname(), mname, categoryDTO);
 
         if (categoryDTO == null)
-            throw new CreateException("Category object is null");
+            throw new CheckException("Category object is null");
 
         // Transforms DTO into domain object
         final Category category = new Category(categoryDTO.getId(), categoryDTO.getName(), categoryDTO.getDescription());
 
-        category.checkData();
+        try{
+        	category.checkData();
+        }catch(Exception e){
+        	throw new CheckException("create category error");
+        }
         // Creates the object
         _categoryDAO.insert(category);
 
@@ -72,9 +75,14 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
 
     public CategoryDTO findCategory(final String categoryId) throws FinderException, CheckException {
         final String mname = "findCategory";
+        Category category = null;
         Trace.entering(getCname(), mname, categoryId);
+        
+        if (categoryId==null||categoryId.equals(""))
+        	throw new CheckException("null or empyt value");
 
-        final Category category = (Category) _categoryDAO.findByPrimaryKey(categoryId);
+        category = (Category) _categoryDAO.findByPrimaryKey(categoryId);
+
 
         // Transforms domain object into DTO
         final CategoryDTO categoryDTO = transformCategory2DTO(category);
@@ -83,7 +91,7 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         return categoryDTO;
     }
 
-    public void deleteCategory(final String categoryId) throws RemoveException, CheckException {
+    public void deleteCategory(final String categoryId) throws CheckException {
         final String mname = "deleteCategory";
         Trace.entering(getCname(), mname, categoryId);
 
@@ -93,14 +101,14 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         try {
             _categoryDAO.findByPrimaryKey(categoryId);
         } catch (FinderException e) {
-            throw new RemoveException("Category must exist to be deleted");
+            throw new CheckException("");
         }
 
         // Deletes the object
         try {
         	_categoryDAO.remove(categoryId);
         } catch (ObjectNotFoundException e) {
-            throw new RemoveException("Category must exist to be deleted");
+            throw new CheckException("Category must exist to be deleted");
         }
     }
 
@@ -109,7 +117,7 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         Trace.entering(getCname(), mname, categoryDTO);
 
         if (categoryDTO == null)
-            throw new UpdateException("Category object is null");
+            throw new CheckException("Category object is null");
 
     	checkId(categoryDTO.getId());
         Category category = new Category();
@@ -118,7 +126,7 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         try {
             category = (Category) _categoryDAO.findByPrimaryKey(categoryDTO.getId());
         } catch (FinderException e) {
-            throw new UpdateException("Category must exist to be updated");
+            throw new CheckException("Category must exist to be updated");
         }
 
         // Transforms DTO into domain object
@@ -129,7 +137,7 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         try {
         	_categoryDAO.update(category);
         } catch (ObjectNotFoundException e) {
-            throw new UpdateException("Category must exist to be updated");
+            throw new CheckException("Category must exist to be updated");
         }
     }
 
@@ -155,14 +163,14 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         Trace.entering(getCname(), mname, productDTO);
 
         if (productDTO == null)
-            throw new CreateException("Product object is null");
+            throw new CheckException("Product object is null");
 
         // Finds the linked object
         Category category = null;
         try {
             category = (Category) _categoryDAO.findByPrimaryKey(productDTO.getCategoryId());
         } catch (FinderException e) {
-            throw new CreateException("Category must exist to create a product");
+            throw new CheckException("Category must exist to create a product");
         }
 
         // Transforms DTO into domain object
@@ -204,14 +212,14 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         try {
             _productDAO.findByPrimaryKey(productId);
         } catch (FinderException e) {
-            throw new RemoveException("Product must exist to be deleted");
+            throw new CheckException("Product must exist to be deleted");
         }
 
         // Deletes the object
         try {
         	_productDAO.remove(productId);
         } catch (ObjectNotFoundException e) {
-            throw new RemoveException("Product must exist to be deleted");
+            throw new CheckException("Product must exist to be deleted");
         }
     }
 
@@ -220,7 +228,7 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         Trace.entering(getCname(), mname, productDTO);
 
         if (productDTO == null)
-            throw new UpdateException("Product object is null");
+            throw new CheckException("Product object is null");
 
         if (productDTO.getCategoryId() == null)
             throw new CheckException("Invalid Category");
@@ -232,7 +240,7 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         try {
             product = (Product) _productDAO.findByPrimaryKey(productDTO.getId());
         } catch (FinderException e) {
-            throw new UpdateException("Product must exist to be updated");
+            throw new CheckException("Product must exist to be updated");
         }
 
         // Finds the linked object
@@ -240,7 +248,7 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         try {
             category = (Category)_categoryDAO.findByPrimaryKey(productDTO.getCategoryId());
         } catch (FinderException e) {
-            throw new UpdateException("Category must exist to update a product");
+            throw new CheckException("Category must exist to update a product");
         }
 
         // Transforms DTO into domain object
@@ -252,7 +260,7 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         try {
         	_productDAO.update(product);
         } catch (ObjectNotFoundException e) {
-            throw new UpdateException("Product must exist to be updated");
+            throw new CheckException("Product must exist to be updated");
         }
     }
 
@@ -270,9 +278,13 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         return productsDTO;
     }
 
-    public Collection findProducts(String categoryId) throws FinderException {
+    public Collection findProducts(String categoryId) throws FinderException, CheckException {
         final String mname = "findProducts";
         Trace.entering(getCname(), mname, categoryId);
+
+        if (categoryId==null||categoryId.equals(""))
+        	throw new CheckException("null or empyt value");
+
 
         // Finds all the products
         final Collection products = _productDAO.findAll(categoryId);
@@ -292,7 +304,7 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         Trace.entering(getCname(), mname, itemDTO);
 
         if (itemDTO == null)
-            throw new CreateException("Item object is null");
+            throw new CheckException("Item object is null");
 
         if (itemDTO.getProductId() == null)
             throw new CheckException("Invalid Product id");
@@ -302,7 +314,7 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         try {
             product = (Product)_productDAO.findByPrimaryKey(itemDTO.getProductId());
         } catch (FinderException e) {
-            throw new CreateException("Product must exist to create an item");
+            throw new CheckException("Product must exist to create an item");
         }
 
         // Transforms DTO into domain object
@@ -325,6 +337,9 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         final String mname = "findItem";
         Trace.entering(getCname(), mname, itemId);
 
+        if (itemId==null||itemId.equals(""))
+        	throw new CheckException("null or empyt value");
+        
         // Finds the object
         final Item item = (Item)_itemDAO.findByPrimaryKey(itemId);
 
@@ -349,14 +364,14 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         try {
         	_itemDAO.findByPrimaryKey(itemId);
         } catch (FinderException e) {
-            throw new RemoveException("Item must exist to be deleted");
+            throw new CheckException("Item must exist to be deleted");
         }
 
         // Deletes the object
         try {
         	_itemDAO.remove(itemId);
         } catch (ObjectNotFoundException e) {
-            throw new RemoveException("Customer must exist to be deleted");
+            throw new CheckException("Customer must exist to be deleted");
         }        
     }
 
@@ -417,9 +432,13 @@ public class CatalogServiceBean extends AbstractRemoteService implements Catalog
         return itemsDTO;
     }
 
-    public Collection findItems(final String productId) throws FinderException {
+    public Collection findItems(final String productId) throws FinderException, CheckException {
         final String mname = "findItems";
         Trace.entering(getCname(), mname, productId);
+        
+        if (productId==null||productId.equals(""))
+        	throw new CheckException("null or empyt value");
+        
 
         // Finds all the items
         final Collection items = _itemDAO.findAll(productId);

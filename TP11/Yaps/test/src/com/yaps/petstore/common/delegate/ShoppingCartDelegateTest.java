@@ -54,7 +54,8 @@ public final class ShoppingCartDelegateTest extends AbstractTestCase {
     	assertEquals(2, c.size());
         
     	ShoppingCartDelegate delegate2 = new ShoppingCartDelegate(sessionId2);
-    	delegate2.addItem("EST10");
+    	delegate2.addItem("EST11");
+
     	c = delegate2.getItems();
     	assertEquals(1, c.size());
     	

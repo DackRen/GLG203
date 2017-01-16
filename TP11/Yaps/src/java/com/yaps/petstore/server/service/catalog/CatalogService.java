@@ -38,7 +38,7 @@ public interface CatalogService {
      * @throws CheckException        is thrown if a invalid data is found
      * @throws RemoteException       is thrown if a remote call fails
      */
-    CategoryDTO createCategory(CategoryDTO categoryDTO) throws CreateException, CheckException, RemoteException;
+    CategoryDTO createCategory(CategoryDTO categoryDTO) throws CreateException, CheckException;
 
     /**
      * Given an id this method uses the Category domain object to load all the data of this
@@ -52,7 +52,7 @@ public interface CatalogService {
      * @throws CheckException        is thrown if a invalid data is found
      * @throws RemoteException         is thrown if a remote call fails
      */
-    CategoryDTO findCategory(String categoryId) throws FinderException, CheckException, RemoteException;
+    CategoryDTO findCategory(String categoryId) throws FinderException, CheckException;
 
     /**
      * Given an id, this method finds a Category domain object and then calls its deletion
@@ -62,9 +62,10 @@ public interface CatalogService {
      * @throws RemoveException is thrown if a DomainException is caught
      *                         or a system failure is occurs
      * @throws CheckException        is thrown if a invalid data is found
+     * @throws ObjectNotFoundException 
      * @throws RemoteException is thrown if a remote call fails
      */
-    void deleteCategory(String categoryId) throws RemoveException, CheckException, RemoteException;
+    void deleteCategory(String categoryId) throws RemoveException, CheckException;
 
     /**
      * Given a CategoryDTO object, this method updates a Category. It first transforms
@@ -77,7 +78,7 @@ public interface CatalogService {
      * @throws CheckException        is thrown if a invalid data is found
      * @throws RemoteException is thrown if a remote call fails
      */
-    void updateCategory(CategoryDTO categoryDTO) throws UpdateException, CheckException, RemoteException;
+    void updateCategory(CategoryDTO categoryDTO) throws UpdateException, CheckException;
 
     /**
      * This method return all the categories from the system. It uses the Category domain object
@@ -88,7 +89,7 @@ public interface CatalogService {
      * @throws ObjectNotFoundException is thrown if the collection is empty
      * @throws RemoteException         is thrown if a remote call fails
      */
-    Collection findCategories() throws FinderException, RemoteException;
+    Collection findCategories() throws FinderException;
 
     // ======================================
     // =      Product Business methods     =
@@ -109,7 +110,7 @@ public interface CatalogService {
      * @throws CheckException        is thrown if a invalid data is found
      * @throws RemoteException       is thrown if a remote call fails
      */
-    ProductDTO createProduct(ProductDTO productDTO) throws CreateException, CheckException, RemoteException;
+    ProductDTO createProduct(ProductDTO productDTO) throws CreateException, CheckException;
 
     /**
      * Given an id this method uses the Product domain object to load all the data of this
@@ -123,7 +124,7 @@ public interface CatalogService {
      * @throws CheckException        is thrown if a invalid data is found
      * @throws RemoteException         is thrown if a remote call fails
      */
-    ProductDTO findProduct(String productId) throws FinderException, CheckException, RemoteException;
+    ProductDTO findProduct(String productId) throws FinderException, CheckException;
 
     /**
      * Given an id, this method finds a Product domain object and then calls its deletion
@@ -135,7 +136,7 @@ public interface CatalogService {
      * @throws CheckException        is thrown if a invalid data is found
      * @throws RemoteException is thrown if a remote call fails
      */
-    void deleteProduct(String productId) throws RemoveException, CheckException, RemoteException;
+    void deleteProduct(String productId) throws RemoveException, CheckException;
 
     /**
      * Given a ProductDTO object, this method updates a Product. It first transforms
@@ -148,7 +149,7 @@ public interface CatalogService {
      * @throws CheckException        is thrown if a invalid data is found
      * @throws RemoteException is thrown if a remote call fails
      */
-    void updateProduct(ProductDTO productDTO) throws UpdateException, CheckException, RemoteException;
+    void updateProduct(ProductDTO productDTO) throws UpdateException, CheckException;
 
     /**
      * This method return all the products from the system. It uses the Product domain object
@@ -161,7 +162,7 @@ public interface CatalogService {
      *                                 or a system failure is occurs
      * @throws RemoteException         is thrown if a remote call fails
      */
-    Collection findProducts() throws FinderException, RemoteException;
+    Collection findProducts() throws FinderException;
 
     /**
      * This method return all the products for a given category. It uses the Product domain object
@@ -175,7 +176,7 @@ public interface CatalogService {
      *                                 or a system failure is occurs
      * @throws RemoteException         is thrown if a remote call fails
      */
-    Collection findProducts(String categoryId) throws FinderException, RemoteException,CheckException;
+    Collection findProducts(String categoryId) throws FinderException,CheckException;
 
     // ======================================
     // =        Item Business methods       =
@@ -196,7 +197,7 @@ public interface CatalogService {
      * @throws CheckException        is thrown if a invalid data is found
      * @throws RemoteException       is thrown if a remote call fails
      */
-    ItemDTO createItem(ItemDTO itemDTO) throws CreateException, CheckException, RemoteException;
+    ItemDTO createItem(ItemDTO itemDTO) throws CreateException, CheckException;
 
     /**
      * Given an id this method uses the Item domain object to load all the data of this
@@ -210,7 +211,7 @@ public interface CatalogService {
      * @throws CheckException        is thrown if a invalid data is found
      * @throws RemoteException         is thrown if a remote call fails
      */
-    ItemDTO findItem(String itemId) throws FinderException, CheckException, RemoteException;
+    ItemDTO findItem(String itemId) throws FinderException, CheckException;
 
     /**
      * Given an id, this method finds a Item domain object and then calls its deletion
@@ -222,7 +223,7 @@ public interface CatalogService {
      * @throws CheckException        is thrown if a invalid data is found
      * @throws RemoteException is thrown if a remote call fails
      */
-    void deleteItem(String itemId) throws RemoveException, CheckException, RemoteException;
+    void deleteItem(String itemId) throws RemoveException, CheckException;
 
     /**
      * Given a ItemDTO object, this method updates an Item. It first transforms
@@ -235,7 +236,7 @@ public interface CatalogService {
      * @throws CheckException        is thrown if a invalid data is found
      * @throws RemoteException is thrown if a remote call fails
      */
-    void updateItem(ItemDTO itemDTO) throws UpdateException, CheckException, RemoteException;
+    void updateItem(ItemDTO itemDTO) throws UpdateException, CheckException;
 
     /**
      * This method return all the items from the system. It uses the Item domain object
@@ -248,7 +249,7 @@ public interface CatalogService {
      *                                 or a system failure is occurs
      * @throws RemoteException         is thrown if a remote call fails
      */
-    Collection findItems() throws FinderException, RemoteException;
+    Collection findItems() throws FinderException;
 
     /**
      * This method return all the items for a given product. It uses the Item domain object
@@ -262,7 +263,7 @@ public interface CatalogService {
      *                                 or a system failure is occurs
      * @throws RemoteException         is thrown if a remote call fails
      */
-    Collection findItems(String productId) throws FinderException, RemoteException, CheckException;
+    Collection findItems(String productId) throws FinderException, CheckException;
 
     /**
      * This method return all the items that match a given keyword. It uses the Item domain object
@@ -276,6 +277,6 @@ public interface CatalogService {
      *                                 or a system failure is occurs
      * @throws RemoteException         is thrown if a remote call fails
      */
-    Collection searchItems(String keyword) throws FinderException, RemoteException;
+    Collection searchItems(String keyword) throws FinderException;
     
 }

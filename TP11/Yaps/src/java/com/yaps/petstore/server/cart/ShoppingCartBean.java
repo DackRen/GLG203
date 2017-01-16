@@ -4,28 +4,30 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
-import com.yaps.petstore.common.dto.ItemDTO;
+import javax.ejb.Stateful;
+
 import com.yaps.petstore.common.dto.ShoppingCartItemDTO;
 import com.yaps.petstore.common.exception.ObjectNotFoundException;
 import com.yaps.petstore.server.domain.item.Item;
 import com.yaps.petstore.server.domain.item.ItemDAO;
+import com.yaps.petstore.server.service.AbstractRemoteService;
 
-public class ShoppingCartBean implements ShoppingCart{
+@Stateful (name="ShoppingCartSB")
+public class ShoppingCartBean extends AbstractRemoteService implements ShoppingCart{
 	
-	private static Map _shoppingCart;
+	private Map<String, Integer> _shoppingCart = new HashMap<String, Integer>();
 	private static final ItemDAO _itemDAO = new ItemDAO();
 
 	@Override
-	public Map getCart() {
+	public Map<String, Integer> getCart() {
 		return _shoppingCart;
 	}
 
 	@Override
-	public Collection getItems() {
+	public Collection<ShoppingCartItemDTO> getItems() {
 		ShoppingCartItemDTO shoppingCartItemDTO;
-		Collection shoppingCartItemDTOs = new ArrayList();
+		Collection<ShoppingCartItemDTO> shoppingCartItemDTOs = new ArrayList<ShoppingCartItemDTO>();
 		Item item;
 		for(Object id : _shoppingCart.keySet()) {
 			try {
@@ -57,16 +59,16 @@ public class ShoppingCartBean implements ShoppingCart{
 	@Override
 	public Double getTotal() {
 		Item item;
-		Double i = 0.0;
+		Double total = 0.0;
 		for(Object id : _shoppingCart.keySet()) {
 			try {
 				item = (Item) _itemDAO.findByPrimaryKey((String)id);
-				i+=item.getUnitCost()*(int)_shoppingCart.get(item.getId());
+				total+=item.getUnitCost()*(Integer)_shoppingCart.get(item.getId());
 			} catch (ObjectNotFoundException e) {
 				e.printStackTrace();
 			}
         }
-		return i;
+		return total;
 	}
 
 	@Override

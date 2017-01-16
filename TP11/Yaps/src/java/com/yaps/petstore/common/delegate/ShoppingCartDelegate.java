@@ -2,17 +2,27 @@ package com.yaps.petstore.common.delegate;
 
 import java.rmi.RemoteException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.yaps.petstore.common.locator.ServiceLocator;
 import com.yaps.petstore.server.cart.ShoppingCart;
-import com.yaps.petstore.server.service.catalog.CatalogServiceHome;
+import com.yaps.petstore.server.cart.ShoppingCartHome;
 
 public class ShoppingCartDelegate {
 	private String _sessionId;
+//	private static boolean cache=false;
+	
+	private ShoppingCart shoppingCart;
 
-	public ShoppingCartDelegate(String id) {
-		this._sessionId = id;
+	private static HashMap<String, ShoppingCart> sessionMap = new HashMap<String, ShoppingCart>();
+
+	public ShoppingCartDelegate(String id) throws RemoteException{
+		_sessionId = id;
+		
+		shoppingCart=getShoppingCart();
+		
+		sessionMap.put(_sessionId,shoppingCart);
 	}
 	
 	public String getSessionId() {
@@ -20,48 +30,51 @@ public class ShoppingCartDelegate {
 	}
 
 	public void empty() throws RemoteException {
-		getShoppingCart().empty();
+		//getShoppingCart().empty();
+		shoppingCart.empty();
 	}
 
 	public Map<?, ?> getCart() throws RemoteException {
-		return getShoppingCart().getCart();
+		return shoppingCart.getCart();
 	}
 
 	public Collection<?> getItems() throws RemoteException {
-		return getShoppingCart().getItems();
+		return shoppingCart.getItems();
 	}
 	
 	public void addItem(String parameter) throws RemoteException {
-		getShoppingCart().addItem(parameter);	
+		shoppingCart.addItem(parameter);	
 	}
 
 	public void updateItemQuantity(String itemId, int i) throws RemoteException {
-		getShoppingCart().updateItemQuantity(itemId, i);	
+		shoppingCart.updateItemQuantity(itemId, i);	
 	}
 
 	public void removeItem(String itemId) throws RemoteException {
-		getShoppingCart().removeItem(itemId);
+		shoppingCart.removeItem(itemId);
 	}
 	
-	
 	public Double getTotal() throws RemoteException {
-		return getShoppingCart().getTotal();
+		return shoppingCart.getTotal();
 	}
 	
     // ======================================
     // =            Private methods         =
     // ======================================
-    private static ShoppingCart getShoppingCart() throws RemoteException {
+    private ShoppingCart getShoppingCart() throws RemoteException {
     	ShoppingCart shoppingCartRemote = null;
-        try {
-            // Looks up for the home interface
-        	shoppingCartRemote = (ShoppingCart) ServiceLocator.getInstance().getHome(CatalogServiceHome.JNDI_NAME);
-        } catch (Exception e) {
-            throw new RemoteException("Lookup or Create exception", e);
-        }
-
+    	if(sessionMap.containsKey(_sessionId)){
+    		return sessionMap.get(_sessionId);
+    	}
+    	else{
+    		try {
+                // Looks up for the home interface
+            	shoppingCartRemote = (ShoppingCart) ServiceLocator.getInstance().getHome(ShoppingCartHome.JNDI_NAME);
+            } catch (Exception e) {
+                throw new RemoteException("Lookup or Create exception", e);
+            }
+    	}
         return shoppingCartRemote;
     }
-
 
 }

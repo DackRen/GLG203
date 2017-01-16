@@ -61,7 +61,7 @@ public final class CustomerDelegate {
     /**
      * Delegates the call to the {@link CustomerService#findCustomers() CustomerService().findCustomers} method.
      */
-    public static Collection findCustomers() throws FinderException, RemoteException {
+    public static Collection<?> findCustomers() throws FinderException, RemoteException {
         return getCustomerService().findCustomers();
     }
 

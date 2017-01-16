@@ -6,15 +6,13 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import com.yaps.petstore.common.dto.OrderDTO;
 import com.yaps.petstore.common.dto.OrderLineDTO;
-import com.yaps.petstore.common.exception.CheckException;
-import com.yaps.petstore.common.exception.CreateException;
-import com.yaps.petstore.common.exception.FinderException;
-import com.yaps.petstore.common.exception.ObjectNotFoundException;
-import com.yaps.petstore.common.exception.RemoveException;
+import com.yaps.petstore.common.exception.*;
+
 import com.yaps.petstore.common.locator.ServiceLocator;
 import com.yaps.petstore.common.logging.Trace;
 import com.yaps.petstore.server.domain.customer.Customer;
@@ -26,9 +24,11 @@ import com.yaps.petstore.server.domain.order.OrderDAO;
 import com.yaps.petstore.server.domain.orderline.OrderLine;
 import com.yaps.petstore.server.domain.orderline.OrderLineDAO;
 import com.yaps.petstore.server.service.AbstractRemoteService;
+
 import com.yaps.petstore.server.service.creditcard.CreditCardServiceBean;
 import com.yaps.petstore.server.service.creditcard.CreditCardServiceLocal;
 import com.yaps.petstore.server.service.creditcard.CreditCardServiceLocalHome;
+
 
 
 @Stateless (name="OrderSB")
@@ -38,11 +38,14 @@ public class OrderServiceBean extends AbstractRemoteService implements OrderServ
     private static final OrderLineDAO _orderLineDAO = new OrderLineDAO();
     private static final CustomerDAO _customerDAO = new CustomerDAO();
     private static final ItemDAO _itemDAO = new ItemDAO();
+    
+    @EJB
+    CreditCardServiceLocal _creditCardServiceLocal;
 
     // ======================================
     // =            Constructors            =
     // ======================================
-    public OrderServiceBean() throws RemoteException {
+    public OrderServiceBean(){
     }
 
     // ======================================
@@ -75,8 +78,8 @@ public class OrderServiceBean extends AbstractRemoteService implements OrderServ
         order.setCreditCardNumber(customer.getCreditCardNumber());
         order.setCreditCardType(customer.getCreditCardType());
 
-        // Checks if the credit card is valid
-        getCreditCardService().verifyCreditCard(order.getCreditCard());
+        
+        _creditCardServiceLocal.verifyCreditCard(order.getCreditCard());
 
         // Creates the order
         _orderDAO.insert(order);
@@ -131,8 +134,8 @@ public class OrderServiceBean extends AbstractRemoteService implements OrderServ
         order.setCreditCardNumber(orderDTO.getCreditCardNumber());
         order.setCreditCardType(orderDTO.getCreditCardType());
 
-        // Checks if the credit card is valid
-        getCreditCardService().verifyCreditCard(order.getCreditCard());
+        _creditCardServiceLocal.verifyCreditCard(order.getCreditCard());
+        
 
         // Creates the order
         _orderDAO.insert(order);
@@ -165,6 +168,9 @@ public class OrderServiceBean extends AbstractRemoteService implements OrderServ
     public OrderDTO findOrder(final String orderId) throws FinderException, CheckException {
         final String mname = "findOrder";
         Trace.entering(getCname(), mname, orderId);
+        
+        if(orderId==null||orderId.equals(""))
+        	throw new CheckException("");
 
         // Finds the object
         Order order = (Order) _orderDAO.findByPrimaryKey(orderId);
@@ -188,7 +194,7 @@ public class OrderServiceBean extends AbstractRemoteService implements OrderServ
         final String mname = "deleteOrder";
         Trace.entering(getCname(), mname, orderId);
 
-        final Order order = new Order();
+        checkId(orderId);
 
         // Checks if the object exists
         try {
@@ -253,9 +259,5 @@ public class OrderServiceBean extends AbstractRemoteService implements OrderServ
     public final String getUniqueId(final String domainClassName) {
         return _orderDAO.getUniqueId(domainClassName);
     }
-
-    private CreditCardServiceLocal getCreditCardService() {
-    	return (CreditCardServiceBean) ServiceLocator.getInstance().getHome(CreditCardServiceLocalHome.JNDI_NAME);
-    }
-
+    
 }
