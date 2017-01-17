@@ -31,10 +31,10 @@ import javax.persistence.TableGenerator;
 @Entity
 @NamedQueries( {
 @NamedQuery(name = "Product.findAll", query="select p from Product p"),
-@NamedQuery(name = "Product.findAllInCategory", query="select p from Product p where p._category._id = :categoryId")
+@NamedQuery(name = "Product.findAllInCategory", query="select pc from Product pc where pc._category._id = :categoryId")
 } )
 @Table(name = "T_PRODUCT")
-public final class Product extends DomainObject implements Serializable {
+public class Product extends DomainObject implements Serializable {
 
     /**
 	 * 
@@ -46,7 +46,7 @@ public final class Product extends DomainObject implements Serializable {
 	@Id
     @Column(name = "id", length = 10)
     @TableGenerator(name="TABLE_GEN_PRODUCT", table="T_COUNTER", pkColumnName="name",
-        valueColumnName="value", pkColumnValue="Order")
+        valueColumnName="value", pkColumnValue="Product")
     @GeneratedValue(strategy=GenerationType.TABLE, generator="TABLE_GEN_PRODUCT") 
     // see http://en.wikibooks.org/wiki/Java_Persistence/Identity_and_Sequencing#Table_sequencing
 	private String _id;

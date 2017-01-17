@@ -14,7 +14,7 @@
                           validation-table-name="DUAL" wrap-jdbc-objects="false">
         <property name="URL" value="jdbc:mysql://localhost:3306/petstoredb12"/>
         <property name="User" value="root"/>
-        <property name="Password" value=""/>
+        <property name="Password" value="root"/>
     </jdbc-connection-pool>
 
     <jdbc-resource jndi-name="java:app/jdbc/petstoreDS12" pool-name="petstoredb12_embeddedConnPool" enabled="true" />

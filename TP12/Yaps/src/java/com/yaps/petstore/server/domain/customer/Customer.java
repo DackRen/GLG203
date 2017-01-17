@@ -24,7 +24,7 @@ import com.yaps.petstore.server.domain.CreditCard;
 @Entity
 @NamedQuery(name = "Customer.findAll", query="select c from Customer c")
 @Table(name = "T_CUSTOMER")
-public final class Customer extends DomainObject implements Serializable {
+public class Customer extends DomainObject implements Serializable {
 	
     /**
 	 * 

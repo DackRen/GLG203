@@ -48,16 +48,27 @@ public final class ItemDAO extends AbstractDataAccessObject<String, Item> {
     // =           Business methods         =
     // ======================================
 
-	public Collection<?> search(String keyword) throws ObjectNotFoundException {
-		Query query = _em.createNamedQuery("Item.findAll");
-		query.setParameter("id", keyword);
+	public Collection<Item> search(String keyword) throws ObjectNotFoundException {
+		if(keyword==null)
+			throw new ObjectNotFoundException();
+		Query query = _em.createNamedQuery("Item.findAllInKeyword");
+		//query.setParameter("key", "'%"+String.valueOf(keyword)+"%'");
+		//query.setParameter("key", keyword);
+		query.setParameter("key", "%"+keyword+"%");
+		//query.setParameter("key", "'%"+keyword+"%'");
+//		Query query = _em.
+//		   		createQuery( "Select i " +
+//		   			"from Item i " +
+//		   			"where i._id " +
+//		   			"LIKE '%"+keyword+"%'" );
 		List<Item> entities = query.getResultList();
 		if (entities.isEmpty())
 			throw new ObjectNotFoundException();
 		return entities;
 	}
 
-	public Collection findAllInProduct(String productId) throws ObjectNotFoundException{
+
+	public Collection<Product> findAllInProduct(String productId) throws ObjectNotFoundException{
 		Query query = _em.createNamedQuery("Item.findAllInProduct");
 		query.setParameter("productId", productId);
 		List<Product> entities = query.getResultList();

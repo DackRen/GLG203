@@ -48,7 +48,7 @@
     <property name="db.host" value="localhost"/>
     <property name="db.sid" value="${application.name}DB12"/>
     <property name="db.user" value="root"/>
-    <property name="db.password" value=""/>
+    <property name="db.password" value="root"/>
     <property name="db.port" value="3306"/>
     <property name="db.driver" value="com.mysql.jdbc.Driver"/>
     <property name="db.url" value="jdbc:mysql://${db.host}:${db.port}/${db.sid}"/>

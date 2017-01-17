@@ -26,11 +26,13 @@ import com.yaps.petstore.common.exception.CheckException;
  */
 @Entity
 @NamedQueries( {
+	// OR i._name LIKE :keyword
 @NamedQuery(name = "Item.findAll", query="select i from Item i"),
-@NamedQuery(name = "Item.findAllInProduct", query="select i from Item i where i._product._id = :productId")
+@NamedQuery(name = "Item.findAllInKeyword", query="select ik from Item ik where ik._id LIKE :key"),
+@NamedQuery(name = "Item.findAllInProduct", query="select ip from Item ip where ip._product._id = :productId")
 } )
 @Table(name = "T_ITEM")
-public final class Item extends DomainObject implements Serializable {
+public class Item extends DomainObject implements Serializable {
 
     /**
 	 * 

@@ -27,7 +27,7 @@ import javax.persistence.TableGenerator;
 @Entity
 @NamedQuery(name = "Category.findAll", query="select c from Category c")
 @Table(name = "T_CATEGORY")
-public final class Category extends DomainObject implements Serializable {
+public class Category extends DomainObject implements Serializable {
 
     /**
 	 * 
