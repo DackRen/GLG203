@@ -25,11 +25,7 @@ import com.yaps.petstore.server.domain.CreditCard;
 @NamedQuery(name = "Customer.findAll", query="select c from Customer c")
 @Table(name = "T_CUSTOMER")
 public class Customer extends DomainObject implements Serializable {
-	
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	// ======================================
     // =             Attributes             =
     // ======================================

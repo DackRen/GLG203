@@ -52,15 +52,7 @@ public final class ItemDAO extends AbstractDataAccessObject<String, Item> {
 		if(keyword==null)
 			throw new ObjectNotFoundException();
 		Query query = _em.createNamedQuery("Item.findAllInKeyword");
-		//query.setParameter("key", "'%"+String.valueOf(keyword)+"%'");
-		//query.setParameter("key", keyword);
 		query.setParameter("key", "%"+keyword+"%");
-		//query.setParameter("key", "'%"+keyword+"%'");
-//		Query query = _em.
-//		   		createQuery( "Select i " +
-//		   			"from Item i " +
-//		   			"where i._id " +
-//		   			"LIKE '%"+keyword+"%'" );
 		List<Item> entities = query.getResultList();
 		if (entities.isEmpty())
 			throw new ObjectNotFoundException();
