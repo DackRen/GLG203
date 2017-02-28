@@ -12,6 +12,6 @@ TP07 XML<br>
 TP08 JSP<br>
 TP09 JSTL<br>
 TP10 HTTP Session<br>
-TP10 Stateless/Stateful EJB 3<br>
-TP10 JPA<br>
+TP11 Stateless/Stateful EJB 3<br>
+TP12 JPA<br>
 
